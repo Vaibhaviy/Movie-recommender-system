@@ -374,7 +374,7 @@ div.stButton > button {
     width: 100%;
     min-height: 48px;
 
-    margin-top: 30px;
+    margin-top: 25px;
     margin-bottom: 0;
 
     background:
