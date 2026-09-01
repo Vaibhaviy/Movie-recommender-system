@@ -197,128 +197,316 @@ st.markdown(
     """
     <style>
 
-    /* Main background */
-    .stApp {
-        background: linear-gradient(
+    /* ========================================================
+   GLOBAL PAGE
+   ======================================================== */
+
+.stApp {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(255, 75, 110, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(255, 143, 75, 0.07),
+            transparent 30%
+        ),
+        linear-gradient(
             135deg,
             #0f0f18,
             #171724
         );
-    }
-
-    /* Hide Streamlit menu */
-    #MainMenu { visibility: hidden; }
-    footer { visibility: hidden; }
-    header { visibility: hidden; }
-
-    /* Main title */
-    .main-title {
-        text-align: center;
-        font-size: 42px;
-        font-weight: 800;
-        color: #ffb347;
-        margin-top: 20px;
-        margin-bottom: 5px;
-        letter-spacing: -0.5px;
-    }
-
-    /* Subtitle */
-    .subtitle {
-        text-align: center;
-        color: #aaaab5;
-        font-size: 17px;
-        margin-bottom: 10px;
-    }
-
-    /* Rotating tagline */
-    .tagline {
-        text-align: center;
-        color: #ff8f4b;
-        font-size: 14px;
-        font-style: italic;
-        font-weight: 500;
-        margin-bottom: 35px;
-        opacity: 0.9;
-    }
-
-    /* Section title */
-    .section-title {
-        font-size: 25px;
-        font-weight: 700;
-        color: white;
-        margin-top: 35px;
-        margin-bottom: 20px;
-        border-left: 5px solid #ff4b6e;
-        padding-left: 12px;
-    }
-
-    .movie-title {
-
-    font-size: 17px;
-
-    font-weight: 700;
 
     color: #ffffff;
+}
 
-    margin-top: 10px;
 
+/* ========================================================
+   HIDE STREAMLIT DEFAULT UI
+   ======================================================== */
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+
+/* ========================================================
+   MAIN CONTAINER
+   ======================================================== */
+
+.block-container {
+    max-width: 1250px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+
+/* ========================================================
+   HEADER
+   ======================================================== */
+
+.main-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4b6e,
+            #ff8f4b,
+            #ffc05c
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-top: 20px;
+    margin-bottom: 6px;
+
+    letter-spacing: -0.5px;
+}
+
+
+.subtitle {
+    text-align: center;
+    color: #ffffff !important;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+
+.tagline {
+    text-align: center;
+    color: #ffb08a !important;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 35px;
+    opacity: 0.95;
+}
+
+
+/* ========================================================
+   SELECT MOVIE LABEL
+   ======================================================== */
+
+div[data-testid="stSelectbox"] label {
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+
+/* ========================================================
+   SELECTBOX
+   ======================================================== */
+
+div[data-baseweb="select"] > div {
+    background-color: #20202b !important;
+    border: 1px solid #3a3a48 !important;
+    border-radius: 10px !important;
     min-height: 48px;
 
-    height: 48px;
-
-    line-height: 1.35;
-
-    overflow: hidden;
-
-    display: -webkit-box;
-
-    -webkit-line-clamp: 2;
-
-    -webkit-box-orient: vertical;
-
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-    /* Movie information */
-    .movie-info {
-        color: #bdbdc7;
-        font-size: 13px;
-        line-height: 1.5;
-    }
 
-    .overview {
+div[data-baseweb="select"] > div:hover {
+    border-color: #ff4b6e !important;
 
-    color: #c8c8d0;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    margin-top: 8px;
-
-    height: 125px;
-
-    overflow: hidden;
-
-    display: -webkit-box;
-
-    -webkit-line-clamp: 5;
-
-    -webkit-box-orient: vertical;
-
+    box-shadow:
+        0 0 12px
+        rgba(255, 75, 110, 0.12);
 }
 
-    .rank {
 
+/* Selected movie */
+
+div[data-baseweb="select"] span {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+
+div[data-baseweb="select"] input {
+    color: #ffffff !important;
+}
+
+
+/* Dropdown */
+
+ul[role="listbox"] {
+    background-color: #20202b !important;
+}
+
+
+ul[role="listbox"] li {
+    color: #ffffff !important;
+    background-color: #20202b !important;
+}
+
+
+ul[role="listbox"] li:hover {
+    background-color: #30303d !important;
+}
+
+
+/* ========================================================
+   FIND MOVIES BUTTON
+   ======================================================== */
+
+div.stButton > button {
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4b6e,
+            #ff8f4b
+        );
+
+    color: #ffffff !important;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 10px 14px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+div.stButton > button:hover {
+    color: #ffffff !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(255, 75, 110, 0.35);
+}
+
+
+div.stButton > button p {
+    color: #ffffff !important;
+}
+
+
+/* ========================================================
+   SECTION TITLE
+   ======================================================== */
+
+.section-title {
+    font-size: 25px;
+    font-weight: 700;
+
+    color: #ffffff !important;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+
+    border-left: 5px solid #ff4b6e;
+
+    padding-left: 12px;
+}
+
+
+/* ========================================================
+   MOVIE CARDS
+   ======================================================== */
+
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background:
+        linear-gradient(
+            160deg,
+            #1c1c28,
+            #16161f
+        ) !important;
+
+    border-radius: 14px !important;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12)
+        !important;
+
+    padding: 8px !important;
+
+    min-height: 650px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 16px 30px
+        rgba(255, 75, 110, 0.20);
+
+    border-color:
+        rgba(255, 75, 110, 0.50)
+        !important;
+}
+
+
+/* ========================================================
+   POSTER
+   ======================================================== */
+
+div[data-testid="stImage"] {
+    width: 100%;
+}
+
+
+div[data-testid="stImage"] img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/* ========================================================
+   RANK BADGE
+   ======================================================== */
+
+.rank {
     display: inline-block;
 
-    color: #ffb347;
+    color: #ffd080 !important;
 
     font-size: 12px;
-
     font-weight: 700;
 
     letter-spacing: 0.3px;
-
     text-transform: uppercase;
 
     background:
@@ -333,169 +521,169 @@ st.markdown(
     padding: 4px 10px;
 
     margin-bottom: 10px;
-
-    min-height: 26px;
-
-    box-sizing: border-box;
-
 }
 
-    /* Genre pills */
-    .genre-pill {
-        display: inline-block;
-        color: #d8d8e2;
-        font-size: 11px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 999px;
-        padding: 2px 9px;
-        margin: 2px 3px 0 0;
-    }
 
-    /* ========================================================
-   FIND MOVIES BUTTON
+/* ========================================================
+   MOVIE TITLE
    ======================================================== */
 
-div.stButton {
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
-}
-
-div.stButton > button {
-
-    width: 100%;
-
-    min-height: 50px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff4b6e,
-            #ff8f4b
-        );
-
-    color: white;
-
+.movie-title {
+    font-size: 18px;
     font-weight: 700;
 
-    border: none;
+    color: #ffffff !important;
 
-    border-radius: 10px;
+    margin-top: 10px;
 
-    padding: 10px 14px;
+    line-height: 1.4;
 
-    margin-bottom: 100px;
-    margin-top:20px;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    min-height: 50px;
 }
 
-div.stButton > button:hover {
 
-    color: white;
-
-    border: none;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 18px
-        rgba(255, 75, 110, 0.35);
-}
-
-    /* Select box */
-    div[data-baseweb="select"] > div {
-        background-color: #20202b;
-        border-radius: 8px;
-        transition: border-color 0.2s ease;
-    }
-
-    div[data-baseweb="select"] > div:hover {
-        border-color: #ff4b6e !important;
-    }
-
-    /* ========================================================
-   MOVIE CARDS
+/* ========================================================
+   MOVIE INFORMATION
    ======================================================== */
 
-div[data-testid="stVerticalBlockBorderWrapper"] {
+.movie-info {
+    color: #eeeeF5 !important;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    line-height: 1.6;
+
+    margin-top: 5px;
+}
+
+
+/* ========================================================
+   GENRE PILLS
+   ======================================================== */
+
+.genre-pill {
+    display: inline-block;
+
+    color: #ffffff !important;
+
+    font-size: 12px;
+    font-weight: 500;
 
     background:
-        linear-gradient(
-            160deg,
-            #1c1c28,
-            #15151f
-        ) !important;
-
-    border-radius: 14px !important;
+        rgba(255, 255, 255, 0.08);
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.10) !important;
+        rgba(255, 255, 255, 0.14);
 
-    padding: 10px !important;
+    border-radius: 999px;
 
-    min-height: 700px;
+    padding: 3px 9px;
 
-    height: 700px;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-
-    box-sizing: border-box;
-
-    overflow: hidden;
+    margin:
+        3px 3px 0 0;
 }
 
 
-div[data-testid="stVerticalBlockBorderWrapper"]:hover {
-
-    transform: translateY(-6px);
-
-    box-shadow:
-        0 16px 30px
-        rgba(255, 75, 110, 0.22);
-
-    border-color:
-        rgba(255, 75, 110, 0.45) !important;
-}
-
-    /* ========================================================
-   POSTERS
+/* ========================================================
+   OVERVIEW EXPANDER
    ======================================================== */
 
-div[data-testid="stImage"] {
+div[data-testid="stExpander"] {
+    border-radius: 10px !important;
 
-    height: 330px;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.14)
+        !important;
 
-    overflow: hidden;
+    background-color:
+        rgba(255, 255, 255, 0.03)
+        !important;
 
+    margin-top: 10px;
 }
 
 
-div[data-testid="stImage"] img {
+div[data-testid="stExpander"] summary {
+    color: #ffffff !important;
 
-    width: 100%;
+    font-size: 14px !important;
 
-    height: 330px;
-
-    object-fit: cover;
-
-    border-radius: 10px;
-
+    font-weight: 700 !important;
 }
 
-    /* Expander styling */
-    .stExpander {
-        border-radius: 10px !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+
+div[data-testid="stExpander"] summary span {
+    color: #ffffff !important;
+}
+
+
+/* Overview text */
+
+div[data-testid="stExpander"] p {
+    color: #ffffff !important;
+
+    font-size: 14px !important;
+
+    line-height: 1.65 !important;
+}
+
+
+div[data-testid="stExpander"] div {
+    color: #ffffff !important;
+}
+
+
+/* ========================================================
+   GENERAL STREAMLIT TEXT
+   ======================================================== */
+
+[data-testid="stMarkdownContainer"] p {
+    color: #ffffff;
+}
+
+
+[data-testid="stMarkdownContainer"] {
+    color: #ffffff;
+}
+
+
+/* ========================================================
+   DIVIDER
+   ======================================================== */
+
+hr {
+    border-color:
+        rgba(255, 255, 255, 0.10) !important;
+}
+
+
+/* ========================================================
+   MOBILE RESPONSIVENESS
+   ======================================================== */
+
+@media (max-width: 768px) {
+
+    .main-title {
+        font-size: 34px;
     }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .tagline {
+        font-size: 12px;
+    }
+
+    .block-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+}
 
     </style>
     """,
